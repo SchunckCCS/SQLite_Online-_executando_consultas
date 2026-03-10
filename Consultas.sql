@@ -67,6 +67,40 @@ SELECT TRIM(nome) FROM tabela; -- TRIM remove os espaços do início e do fim de
 
 SELECT REPLACE(saudacao, 'hello', 'hi') FROM tabela; -- Troca o primeiro texto, pelo segundo
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Função de data
+
+SELECT id_colaborador, JULIANDAY(datatermino) - JULIANDAY(datacontratacao) -- Isso aqui vale um texto:
+/*Basicamente a função JULIANDAY tem esse nome porque ela faz o cálculo do dia 
+24 de novembro de 4714 a.C. até os dias de hoje, e essa época foi o inicio da era Juliana. 
+Essa função é usada, majoritariamente, para fazer cálculo de datas. 
+A data de ponto de partiida foi escolhida por históriadores para ser o mais 
+longe possível do dia atual, para que se precisassse fazer um cálculo no passado, 
+não tivesse como resultado números negativos..*/
+from HistoricoEmprego
+where datatermino is NOT NULL;
+
+SELECT DATE('now', '10-days') -- Essa função retorna o ano, mês e dia de agora podendo também fazer alterações.
+
+SELECT TIME('now'); -- TIME é análogo ao DATE, porém ele retorna as horas, minutos e segundos de agora. Ele também pode ser alterado.
+
+SELECT DATETIME('now') -- É a junção das duas funções anteriores.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Funções numéricas
+
+SELECT AVG(faturamento_bruto), ROUND (AVG(faturamento_bruto),2) FROM faturamento; -- ROUND é uma função que arredonda o número para duas casa decimais depois da vígular
+
+SELECT CEIL(faturamento_bruto), CEIL(despesas) FROM faturamento; -- CEIL arredonda para um número inteiro
+
+SELECT POWER(2, 3); -- POWER eleva o primeiro número ao segundo (2^3)
+
+SELECT SQRT(16); -- SQRT retorna a raiz quadrada de um número
+
+SELECT RANDOM(); -- RANDOM gera um número aleatório entre -9223372036854775808 e +9223372036854775807
+
+SELECT ABS(-5); -- Retorna o valor de um número, que é o seu sinal (tipo o módulo)
+
 
 
 
