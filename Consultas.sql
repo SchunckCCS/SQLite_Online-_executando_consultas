@@ -101,6 +101,28 @@ SELECT RANDOM(); -- RANDOM gera um número aleatório entre -9223372036854775808
 
 SELECT ABS(-5); -- Retorna o valor de um número, que é o seu sinal (tipo o módulo)
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Função de conversão
+
+SELECT (' O faturamento bruto médio foi ' || CAST(ROUND (AVG(faturamento_bruto),2) AS TEXT)) -- Cast seve para converter um tipo de dados em outro. Nesse exemplo foi de int para string
+FROM faturamento;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- If do SQL
+
+SELECT id_colaborador, cargo, salario,
+CASE
+WHEN salario < 3000 THEN 'Baixo'
+WHEN salario BETWEEN 3000 AND 6000 THEN 'Médio'
+ELSE 'Alto'
+END AS categoria_salario -- É o nome da coluna criada a partir do if
+FROM HistoricoEmprego;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Cláusula Rename
+
+ALTER TABLE HistoricoEmprego RENAME TO CargosColaboradores;
+
 
 
 
